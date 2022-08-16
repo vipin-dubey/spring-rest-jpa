@@ -23,7 +23,7 @@ public class SpringRestJpaApplication {
         SpringApplication.run(SpringRestJpaApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     public CommandLineRunner run(BuildingLimitService buildingLimitService) throws Exception {
         return (String[] args) -> {
 
@@ -66,7 +66,7 @@ public class SpringRestJpaApplication {
             //Persist it to database
             heightPlateauService.add(heightPlateau);
         };
-    }
+    }*/
 
 
 }
