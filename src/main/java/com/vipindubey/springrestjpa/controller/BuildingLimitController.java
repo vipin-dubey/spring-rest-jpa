@@ -23,7 +23,7 @@ public class BuildingLimitController {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
-    @GetMapping(path="/buildinglimits")
+    @GetMapping(path="/buildinglimit/all")
     public @ResponseBody Iterable<BuildingLimit> getAllBuildingLimits() {
         return buildingLimitService.list();
     }

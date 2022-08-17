@@ -13,7 +13,7 @@ public class SplitBuildingLimitController {
     @Autowired
     SplitBuildingLimitService splitBuildingLimitService;
 
-    @GetMapping(path="/splitbuildinglimits")
+    @GetMapping(path="/splitbuildinglimit/all")
     public @ResponseBody
     Iterable<SplitBuildingLimit> getAllSplitBuildingLimits() {
         return splitBuildingLimitService.list();

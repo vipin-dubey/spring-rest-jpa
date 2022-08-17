@@ -16,7 +16,7 @@ public class HeightPlateauController {
     HeightPlateauService heightPlateauService;
 
 
-    @GetMapping(path="/heightplateaus")
+    @GetMapping(path="/heightplateau/all")
     public @ResponseBody
     Iterable<HeightPlateau> getAllHeightPlateaus() {
         return heightPlateauService.list();
