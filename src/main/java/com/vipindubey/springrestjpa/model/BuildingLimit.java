@@ -15,6 +15,9 @@ public class BuildingLimit implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Version
+    private Long version;
+
     @NotNull
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "coordinate_id", referencedColumnName = "id")

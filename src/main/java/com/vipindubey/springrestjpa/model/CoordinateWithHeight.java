@@ -44,14 +44,6 @@ public class CoordinateWithHeight extends Coordinate implements Serializable {
         this.elevation = elevation;
     }
 
-    public long getHeight() {
-        return elevation;
-    }
-
-    public void setHeight(long height) {
-        this.elevation = height;
-    }
-
     @Override
     public String toString() {
         return "CoordinateWithHeight{" +

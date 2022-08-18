@@ -3,9 +3,9 @@ package com.vipindubey.springrestjpa.controller;
 import com.vipindubey.springrestjpa.model.BuildingLimit;
 import com.vipindubey.springrestjpa.model.HeightPlateau;
 import com.vipindubey.springrestjpa.model.SplitBuildingLimit;
-import com.vipindubey.springrestjpa.service.BuildingLimitService;
-import com.vipindubey.springrestjpa.service.HeightPlateauService;
-import com.vipindubey.springrestjpa.service.SplitBuildingLimitService;
+import com.vipindubey.springrestjpa.service.BuildingLimitServiceImpl;
+import com.vipindubey.springrestjpa.service.HeightPlateauServiceImpl;
+import com.vipindubey.springrestjpa.service.SplitBuildingLimitServiceImpl;
 import com.vipindubey.springrestjpa.util.APIRequestWrapper;
 import com.vipindubey.springrestjpa.util.APIResponseWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,21 +19,17 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping("/buldinglimitsandheightplateaus")
 public class AppController {
 
     @Autowired
-    BuildingLimitService buildingLimitService;
+    BuildingLimitServiceImpl buildingLimitService;
     @Autowired
-    HeightPlateauService heightPlateauService;
+    HeightPlateauServiceImpl heightPlateauService;
     @Autowired
-    SplitBuildingLimitService splitBuildingLimitService;
+    SplitBuildingLimitServiceImpl splitBuildingLimitService;
 
-    @RequestMapping("/")
-    public String welcome(){
-        return "Welcome, there is nothing here yet, better luck next time!";
-    }
-
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @PostMapping
     ResponseEntity<APIResponseWrapper> addBuldingLimitsAndHeighPlateaus(@Valid @RequestBody APIRequestWrapper apiRequestWrapper){
 
         List<BuildingLimit> buildingLimitList = apiRequestWrapper.getBuildingLimits();
@@ -53,12 +49,12 @@ public class AppController {
         return new ResponseEntity<APIResponseWrapper>(apiResponseWrapper, HttpStatus.OK);
     }
 
-    @GetMapping(path="/all")
+    @GetMapping
     public @ResponseBody APIResponseWrapper getAllData(){
 
-        List<BuildingLimit> buildingLimitList = (ArrayList)buildingLimitService.list();
-        List<HeightPlateau> heightPlateauList = (ArrayList)heightPlateauService.list();
-        List<SplitBuildingLimit> splitBuildingLimitList = (ArrayList)splitBuildingLimitService.list();
+        List<BuildingLimit> buildingLimitList = (ArrayList)buildingLimitService.getAllBuildingLimits();
+        List<HeightPlateau> heightPlateauList = (ArrayList)heightPlateauService.getAllHeightPlateaus();
+        List<SplitBuildingLimit> splitBuildingLimitList = (ArrayList)splitBuildingLimitService.getAllSplitBuildingLimits();
 
         APIResponseWrapper apiResponseWrapper = new APIResponseWrapper(buildingLimitList, heightPlateauList, splitBuildingLimitList);
 

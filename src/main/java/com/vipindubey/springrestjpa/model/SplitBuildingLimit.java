@@ -15,6 +15,9 @@ public class SplitBuildingLimit  implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Version
+    private Long version;
+
     @NotNull
     @ManyToMany
     private List<Coordinate> coordinates;

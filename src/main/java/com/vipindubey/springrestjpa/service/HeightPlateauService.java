@@ -1,27 +1,16 @@
 package com.vipindubey.springrestjpa.service;
 
 import com.vipindubey.springrestjpa.model.HeightPlateau;
-import com.vipindubey.springrestjpa.repository.HeightPlateauRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
-@Service
-public class HeightPlateauService {
+public interface HeightPlateauService {
 
-    @Autowired
-    HeightPlateauRepository heightPlateauRepository;
-
-    public HeightPlateau add(HeightPlateau heightPlateau){
-        return heightPlateauRepository.save(heightPlateau);
-    }
-
-    public Iterable<HeightPlateau> addHeightPlateauList(List<HeightPlateau> heightPlateauList){
-        return heightPlateauRepository.saveAll(heightPlateauList);
-    }
-
-    public Iterable<HeightPlateau> list(){
-        return heightPlateauRepository.findAll();
-    }
+    HeightPlateau saveHeightPlateau(HeightPlateau heightPlateau);
+    List<HeightPlateau> getAllHeightPlateaus();
+    Optional<HeightPlateau> getHeightPlateauById(long id);
+    HeightPlateau updateHeightPlateau(HeightPlateau heightPlateau) throws SQLException;
+    void deleteHeightPlateau(long id);
 }

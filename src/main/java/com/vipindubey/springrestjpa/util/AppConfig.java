@@ -10,8 +10,10 @@ import org.springframework.context.annotation.Configuration;
 import com.amazonaws.services.secretsmanager.model.GetSecretValueRequest;
 import com.amazonaws.services.secretsmanager.model.GetSecretValueResult;
 import com.google.gson.Gson;
+import org.springframework.retry.annotation.EnableRetry;
 
 @Configuration
+@EnableRetry
 public class AppConfig {
     private Gson gson = new Gson();
 

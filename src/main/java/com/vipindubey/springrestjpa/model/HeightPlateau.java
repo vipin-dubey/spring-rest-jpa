@@ -16,6 +16,9 @@ public class HeightPlateau implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Version
+    private Long version;
+
     @NotNull
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "coordinate_with_height_id", referencedColumnName = "id")
